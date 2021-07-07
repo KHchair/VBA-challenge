@@ -22,6 +22,8 @@ Dim stock_volume() As Long
 stock_array_increment = 0
 last_row = Cells(Rows.Count, "A").End(xlUp).Row
 
+
+'for loop to scrape data for target categories
 For i = 1 To last_row
     
     'ticker logic
@@ -41,6 +43,10 @@ For i = 1 To last_row
      
 Next i
 
+'for loop to print scraped data into excel sheet
+For i = 1 To stock_array_increment
+
+Next i
 
 End Sub
 
