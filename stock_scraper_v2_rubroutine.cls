@@ -32,11 +32,14 @@ For i = 2 To lastRow
     Cells(j, 9) = stockTicker
     Cells(j, 10) = stockClose - stockOpen
         
-        If stockClose <> 0 Then
-        Cells(j, 11) = (stockClose - stockOpen) / stockClose
+        'janky work around for reading 0 from the first row on initial loop
+        'prints percent change
+        If stockOpen <> 0 Then
+        Cells(j, 11) = (stockClose - stockOpen) / stockOpen
         End If
+    
     Cells(j, 12) = stockVolume
-    'Cells(j, 11) = (stockClose - stockOpen) / stockClose
+    
     
     'changes variables for next data print line
     stockTicker = Cells(i, 1)
