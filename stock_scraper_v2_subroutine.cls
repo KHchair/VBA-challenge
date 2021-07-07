@@ -9,13 +9,13 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = True
 Sub stock_scraper_v2()
 
-Dim i As Long
-Dim j As Long
+Dim i As Double
+Dim j As Double
 Dim stockTicker  As String
-Dim stockOpen As Long
-Dim stockClose As Long
+Dim stockOpen As Double
+Dim stockClose As Double
 Dim stockVolume As Double
-Dim lastRow As Long
+Dim lastRow As Double
 
 'Cycles through every worksheet in excel file
 For Each ws In Worksheets
@@ -134,5 +134,3 @@ Next i
 Next ws
 
 End Sub
-
-
