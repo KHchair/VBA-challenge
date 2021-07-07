@@ -94,6 +94,14 @@ greatestInc = Cells(2, 11)
 greatestDec = Cells(2, 11)
 greatestVol = Cells(2, 12)
 
+'set cell values incase the first stock is the rightful holder of any category
+Cells(2, 16) = stockTicker
+Cells(2, 17) = greatestInc
+Cells(3, 16) = stockTicker
+Cells(3, 17) = greatestDec
+Cells(4, 16) = stockTicker
+Cells(4, 17) = greatestVol
+
 'compares new 3 variables on each increment of the table to see who is "most" of their respective category
 For i = 2 To lastRow
 
