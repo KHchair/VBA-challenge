@@ -28,25 +28,26 @@ last_row = Cells(Rows.Count, "A").End(xlUp).Row
 'gets a mismatch error out of the way
 Cells(1, 6).Value = 0
 
-'for loop to scrape data for target categories
+'for loop to scrape data needed for data dump on sheet
 For i = 2 To last_row
     
     'ticker logic
      If Cells(i, 1).Value <> stock_ticker(stock_array_increment) Then
-     stock_close(stock_array_increment) = Cells(i - 1, 6).Value
-     closingprice = stock_close(stock_array_increment)
+    ' stock_close(stock_array_increment) = Cells(i - 1, 6).Value
+    ' closingprice = stock_close(stock_array_increment)
      
      'if statement to prevent overflow error from first row of data
-        If closingprice = 0 Then
-        closingprice = 999
-        End If
+     '   If closingprice = 0 Then
+     '   closingprice = 999
+     '   End If
      
-     openingprice = stock_open(stock_array_increment)
-     stock_percent_change(stock_array_increment) = ((closingprice - openingprice) / closingprice)
-     'stock_array_increment = stock_array_increment + 1
+     'openingprice = stock_open(stock_array_increment)
+     'stock_percent_change(stock_array_increment) = ((closingprice - openingprice) / closingprice)
+     'MsgBox (stock_array_increment)
+     stock_array_increment = stock_array_increment + 1
      'stock_ticker(stock_array_increment) = Cells(i, 1).Value
      'stock_open(stock_array_increment) = Cells(i, 3).Value
-     'stock_volume(stock_array_increment) = stock_volume(stock_array_increment) + Cells(i, 7).Value
+     'stock_volume(stock_array_increment) = (stock_volume(stock_array_increment) + Cells(i, 7).Value)
      
      Else
      
@@ -56,7 +57,7 @@ For i = 2 To last_row
      
 Next i
 
-'for loop to print scraped data into excel sheet
+'Print scraped data into excel sheet
 For i = 1 To stock_array_increment
     Cells(i, 9) = stock_ticker(i)
     Cells(i, 10) = stock_close(i) - stock_open(i)
