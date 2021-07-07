@@ -9,23 +9,25 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = True
 Sub stock_scraper_v2()
 
-Dim stockPointer As Long
 Dim i As Long
+Dim j As Long
 Dim stockTicker  As String
 Dim stockOpen As Long
 Dim stockClose As Long
 Dim stockVolume As Double
 Dim lastRow As Long
-Dim j As Long
 
-
-stockOpen = Cells(2, 3)
+'set "<close>" header to 0 to avoid a data mismatch on first loop
 Cells(1, 6) = 0
+
+'set lastRow var to +1 to accomodate algo logic for the last stock
 lastRow = Cells(Rows.Count, "A").End(xlUp).Row + 1
 j = 1
 
+'passes through every row in the data set
 For i = 2 To lastRow
 
+    'looks for stock name transitions and executes necessary operations
     If Cells(i, 1).Value <> stockTicker Then
     stockClose = Cells(i - 1, 6)
     
@@ -39,8 +41,7 @@ For i = 2 To lastRow
         End If
     
     Cells(j, 12) = stockVolume
-    
-    
+      
     'changes variables for next data print line
     stockTicker = Cells(i, 1)
     stockOpen = Cells(i, 3)
@@ -48,14 +49,11 @@ For i = 2 To lastRow
     j = j + 1
     
    
-    
+    'tallies volumes if  stockTicker is equal to prior row's stock
     Else
     
-    
     stockVolume = stockVolume + Cells(i, 7)
-    
-    
-    
+        
     End If
     
 
