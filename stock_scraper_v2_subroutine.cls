@@ -2,7 +2,7 @@ VERSION 1.0 CLASS
 BEGIN
   MultiUse = -1  'True
 END
-Attribute VB_Name = "Sheet1"
+Attribute VB_Name = "Sheet3"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
@@ -74,9 +74,9 @@ ws.Cells(1, 6) = "<close>"
 
 'Adds headers for newly populated data
 ws.Cells(1, 9) = "Ticker"
-ws.Cells(1, 10) = "Yearly Price Chang"
+ws.Cells(1, 10) = "Yearly Price Change"
 ws.Cells(1, 11) = "Percent Price Change"
-ws.Cells(1, 12) = "Total Volume"
+ws.Cells(1, 12) = "Total Stock Volume"
 
 'challenge
 Dim greatestInc As Long
