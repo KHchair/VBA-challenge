@@ -35,7 +35,11 @@ For i = 2 To last_row
      If Cells(i, 1).Value <> stock_ticker(stock_array_increment) Then
      stock_close(stock_array_increment) = Cells(i - 1, 6).Value
      closingprice = stock_close(stock_array_increment)
-     MsgBox (closingprice)
+     
+     'if statement to prevent overflow error from first row of data
+        If closingprice = 0 Then
+        closingprice = 999
+        End If
      
      openingprice = stock_open(stock_array_increment)
      stock_percent_change(stock_array_increment) = ((closingprice - openingprice) / closingprice)
@@ -62,5 +66,3 @@ For i = 1 To stock_array_increment
 Next i
 
 End Sub
-
-
