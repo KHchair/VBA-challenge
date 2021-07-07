@@ -78,18 +78,46 @@ Cells(1, 12) = "Total Volume"
 'challenge
 Dim greatestInc As Long
 Dim greatestDec As Long
-Dim greatesVol As Double
+Dim greatestVol As Double
 
+'print table headers
 Cells(2, 15) = "Greatest % Increase"
 Cells(3, 15) = "Greatest % Decrease"
 Cells(4, 15) = "Greatest Total Volume"
 Cells(1, 16) = "Ticker"
 Cells(1, 17) = "Value"
 
+'set lastRow based on first column of table populated by this subroutine
 lastRow = Cells(Rows.Count, "I").End(xlUp).Row
+stockTicker = Cells(2, 9)
+greatestInc = Cells(2, 11)
+greatestDec = Cells(2, 11)
+greatestVol = Cells(2, 12)
+
+'compares new 3 variables on each increment of the table to see who is "most" of their respective category
 For i = 2 To lastRow
 
-
+    If greatestInc < Cells(i, 11) Then
+    greatestInc = Cells(i, 11)
+    stockTicker = Cells(i, 9)
+    Cells(2, 16) = stockTicker
+    Cells(2, 17) = greatestInc
+    End If
+    
+    If greatestDec > Cells(i, 11) Then
+    greatestDec = Cells(i, 11)
+    stockTicker = Cells(i, 9)
+    Cells(3, 16) = stockTicker
+    Cells(3, 17) = greatestDec
+    End If
+    
+    If greatestVol < Cells(i, 12) Then
+    greatestVol = Cells(i, 12)
+    stockTicker = Cells(i, 9)
+    Cells(4, 16) = stockTicker
+    Cells(4, 17) = greatestVol
+    End If
+    
 Next i
 
 End Sub
