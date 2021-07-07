@@ -31,10 +31,18 @@ For i = 2 To lastRow
     If Cells(i, 1).Value <> stockTicker Then
     stockClose = Cells(i - 1, 6)
     
+    'print data stored in vars to the sheet
     Cells(j, 9) = stockTicker
     Cells(j, 10) = stockClose - stockOpen
         
-        'janky work around for reading 0 from the first row on initial loop
+        'fills green for increased price, red for decreased price, none for 0
+        If stockClose > stockOpen Then
+        Cells(j, 10).Interior.ColorIndex = 4
+        ElseIf stockClose < stockOpen Then
+        Cells(j, 10).Interior.ColorIndex = 3
+        End If
+        
+        'work around for reading 0 from the first row on initial loop
         'prints percent change
         If stockOpen <> 0 Then
         Cells(j, 11) = (stockClose - stockOpen) / stockOpen
