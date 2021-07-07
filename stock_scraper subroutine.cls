@@ -33,17 +33,17 @@ For i = 2 To last_row
     
     'ticker logic
      If Cells(i, 1).Value <> stock_ticker(stock_array_increment) Then
-    ' stock_close(stock_array_increment) = Cells(i - 1, 6).Value
-    ' closingprice = stock_close(stock_array_increment)
+     stock_close(stock_array_increment) = Cells(i - 1, 6).Value
+     closingprice = stock_close(stock_array_increment)
      
      'if statement to prevent overflow error from first row of data
-     '   If closingprice = 0 Then
-     '   closingprice = 999
-     '   End If
+        If closingprice = 0 Then
+        closingprice = 999
+        End If
      
-     'openingprice = stock_open(stock_array_increment)
-     'stock_percent_change(stock_array_increment) = ((closingprice - openingprice) / closingprice)
-     'MsgBox (stock_array_increment)
+     openingprice = stock_open(stock_array_increment)
+     stock_percent_change(stock_array_increment) = ((closingprice - openingprice) / closingprice)
+     'MsgBox (stock_percent_change(stock_array_increment))
      stock_array_increment = stock_array_increment + 1
      'stock_ticker(stock_array_increment) = Cells(i, 1).Value
      'stock_open(stock_array_increment) = Cells(i, 3).Value
