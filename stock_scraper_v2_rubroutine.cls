@@ -14,14 +14,13 @@ Dim i As Long
 Dim stockTicker  As String
 Dim stockOpen As Long
 Dim stockClose As Long
-Dim stockVolume As Long
+Dim stockVolume As Double
 Dim lastRow As Long
 Dim j As Long
 
 
 stockOpen = Cells(2, 3)
 Cells(1, 6) = 0
-stockClose = 0
 lastRow = Cells(Rows.Count, "A").End(xlUp).Row + 1
 j = 1
 
@@ -30,14 +29,13 @@ For i = 2 To lastRow
     If Cells(i, 1).Value <> stockTicker Then
     stockClose = Cells(i - 1, 6)
     
-    
     Cells(j, 9) = stockTicker
     Cells(j, 10) = stockClose - stockOpen
         
         If stockClose <> 0 Then
         Cells(j, 11) = (stockClose - stockOpen) / stockClose
         End If
-        
+    Cells(j, 12) = stockVolume
     'Cells(j, 11) = (stockClose - stockOpen) / stockClose
     
     'changes variables for next data print line
@@ -51,7 +49,7 @@ For i = 2 To lastRow
     Else
     
     
-    'stockVolume = stockVolume + Cells(i, 7)
+    stockVolume = stockVolume + Cells(i, 7)
     
     
     
