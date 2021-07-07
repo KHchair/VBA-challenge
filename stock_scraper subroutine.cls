@@ -25,14 +25,13 @@ last_row = Cells(Rows.Count, "A").End(xlUp).Row
 For i = 1 To last_row
     
     'ticker logic
-     If Cells(i, 1).Value <> stock_ticker(stock_array_increment - 1) Then
+     If Cells(i, 1).Value <> stock_ticker(stock_array_increment) Then
      stock_close(stock_array_increment) = Cells(i - 1, 6).Value
      stock_percent_change(stock_array_increment) = (stock_close - stock_open) / stock_open
      stock_array_increment = stock_array_increment + 1
      stock_ticker(stock_array_increment) = Cells(i, 1).Value
      stock_open(stock_array_increment) = Cells(i, 3).Value
      stock_volume(stock_array_increment) = stock_volume(stock_array_increment).Value + Cells(i, 7).Value
-     
      
      Else
      
