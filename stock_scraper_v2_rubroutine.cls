@@ -63,7 +63,6 @@ For i = 2 To lastRow
     stockVolume = stockVolume + Cells(i, 7)
         
     End If
-    
 
 Next i
 
@@ -76,7 +75,22 @@ Cells(1, 10) = "Yearly Price Chang"
 Cells(1, 11) = "Percent Price Change"
 Cells(1, 12) = "Total Volume"
 
-MsgBox (stockClose)
+'challenge
+Dim greatestInc As Long
+Dim greatestDec As Long
+Dim greatesVol As Double
+
+Cells(2, 15) = "Greatest % Increase"
+Cells(3, 15) = "Greatest % Decrease"
+Cells(4, 15) = "Greatest Total Volume"
+Cells(1, 16) = "Ticker"
+Cells(1, 17) = "Value"
+
+lastRow = Cells(Rows.Count, "I").End(xlUp).Row
+For i = 2 To lastRow
+
+
+Next i
 
 End Sub
 
